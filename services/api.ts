@@ -31,7 +31,7 @@ export const fetchMovies = async ({query} : {query: string}) => {
         headers : TMDB_CONFIGUE.headers
     })
 
-    console.log("Response", response.status)
+    // console.log("Response", response.status)
 
     //@ts-ignore
      if (!response.ok) {
@@ -43,6 +43,25 @@ export const fetchMovies = async ({query} : {query: string}) => {
 
     //@ts-ignore    
     const data = await  response.json();
-    console.log("Data", data);
+    // console.log("Data", data);
     return data?.results;
+}
+
+
+export const movieDetails = async (id:string) => {
+    const endPoint = `${TMDB_CONFIGUE.BASE_URL}/movie/${id}`;
+
+    const response = await fetch(endPoint,{
+        method : 'GET',
+        headers : TMDB_CONFIGUE.headers
+    })
+
+    if(!response.ok){
+        // const errorText = await response.text();
+        throw new Error(response.statusText || "Something went wrong");
+    }
+
+    const data = await response.json()
+
+    return data;
 }

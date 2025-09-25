@@ -52,7 +52,7 @@ export default function Index() {
               placeHolder="search for a movie"
             />
             <>
-              <Text className="text-white mt-10 mb-2">Latest Movies</Text>
+              <Text className="text-white mt-10 mb-2 text-lg font-bold">Latest Movies</Text>
               <FlatList
                 scrollEnabled={false}
                 data={movies}
@@ -63,7 +63,7 @@ export default function Index() {
                 }
                 renderItem={({ item }) => (
                   // <View className="">
-                  <MovieCard title={item.title} />
+                  <MovieCard {...item} />
                   // </View>
                 )}
                 ListEmptyComponent={() => (
